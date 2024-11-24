@@ -25,7 +25,7 @@ const swaggerOptions = {
     servers: [
       {
         url: "http://localhost:3002",
-        url: "https://restapinutech-production-7444.up.railway.app/",
+        url: "https://restapinutech-production-7444.up.railway.app",
       },
     ],
     components: {
