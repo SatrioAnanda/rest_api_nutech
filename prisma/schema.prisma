@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Membership {
+  email         String        @id @db.VarChar(100)
+  password      String        @db.VarChar(100)
+  first_name    String        @db.VarChar(100)
+  last_name     String        @db.VarChar(100)
+  profile_image String?       @db.VarChar(255)
+  Transaction   Transaction[]
+
+  @@map("memberships")
+}
+
+model Banner {
+  id           Int     @id @default(autoincrement())
+  banner_name  String  @db.VarChar(100)
+  banner_image String? @db.VarChar(100)
+  description  String? @db.Text()
+
+  @@map("banners")
+}
+
+model Service {
+  id            Int           @id @default(autoincrement())
+  service_code  String        @unique @db.VarChar(100)
+  service_name  String        @db.VarChar(100)
+  service_icon  String?       @db.VarChar(100)
+  service_tarif Int           @db.Integer()
+  Transaction   Transaction[]
+
+  @@map("services")
+}
+
+model Transaction {
+  id               Int       @id @default(autoincrement())
+  email            String    @db.VarChar(100)
+  service_code     String?   @db.VarChar(100)
+  invoice_number   String    @unique @db.VarChar(100)
+  transaction_type String    @db.VarChar(100)
+  description      String    @db.VarChar(100)
+  total_amount     Int       @db.Integer()
+  current_balance  Int       @default(0) @db.Integer()
+  created_on       DateTime  @default(now())
+  update_on        DateTime? @updatedAt
+
+  membership Membership @relation(fields: [email], references: [email])
+  service    Service?   @relation(fields: [service_code], references: [service_code])
+
+  @@map("transactions")
+}
