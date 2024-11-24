@@ -48,7 +48,7 @@ const swaggerOptions = {
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-web.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+web.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 web.use(publicRouter);
 web.use(membershipRouter);
