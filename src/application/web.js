@@ -24,8 +24,10 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3002",
         url: "https://restapinutech-production-7444.up.railway.app",
+      },
+      {
+        url: "http://localhost:3001",
       },
     ],
     components: {
@@ -48,7 +50,7 @@ const swaggerOptions = {
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-web.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+web.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 web.use(publicRouter);
 web.use(membershipRouter);
