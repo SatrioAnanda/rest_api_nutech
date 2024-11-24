@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "restful_api for nutech integration test (by Satrio Ananda Setiawan)",
   "main": "src/main.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/main.js",
     "seed": "node prisma/seed.js",
@@ -11,7 +12,6 @@
   },
   "author": "Satrio Ananda Setiawan",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "bcrypt": "^5.1.1",
