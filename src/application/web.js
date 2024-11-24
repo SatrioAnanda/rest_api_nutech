@@ -50,6 +50,10 @@ const swaggerOptions = {
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
+web.get("/", (req, res) => {
+  res.redirect("/api-docs"); // Mengarahkan pengguna ke halaman Swagger Docs
+});
+
 web.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 web.use(publicRouter);
