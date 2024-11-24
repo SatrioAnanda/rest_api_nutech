@@ -33,7 +33,7 @@ const swaggerOptions = {
         BearerAuth: {
           type: "http",
           scheme: "bearer",
-          bearerFormat: "JWT", // Menyatakan bahwa token adalah JWT
+          bearerFormat: "JWT",
         },
       },
     },
