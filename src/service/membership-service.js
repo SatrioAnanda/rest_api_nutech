@@ -14,7 +14,6 @@ import {
   verifyToken,
 } from "../utils/auth.js";
 
-
 /**
  * @swagger
  * /registration:
@@ -329,7 +328,12 @@ const profile = async (request) => {
     return {
       status: 0,
       message: "Sukses",
-      data: Array.isArray(result) ? result[0] : result,
+      data: Array.isArray(result)
+        ? {
+            ...result[0],
+            profile_image_url: `${baseURL}/${result[0].profile_image}`,
+          }
+        : result,
     };
   } catch (error) {
     if (error instanceof ResponseError) {
@@ -441,7 +445,12 @@ const update = async (request) => {
     return {
       status: 0,
       message: "Update Pofile berhasil",
-      data: Array.isArray(result) ? result[0] : result,
+      data: Array.isArray(result)
+        ? {
+            ...result[0],
+            profile_image_url: `${baseURL}/${result[0].profile_image}`,
+          }
+        : result,
     };
   } catch (error) {
     if (error instanceof ResponseError) {
@@ -519,7 +528,7 @@ const update = async (request) => {
 
 const uploadProfile = async (request) => {
   try {
-    const baseURL = getBaseURL(); 
+    const baseURL = getBaseURL();
     const email = request.user.email;
     if (!request.file) {
       throw new ResponseError(400, 102, "Field file tidak boleh kosong");
