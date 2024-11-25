@@ -7,7 +7,7 @@ const authMiddleware = (request, response, next) => {
       .status(401)
       .json({
         status: 108,
-        message: "Token tidak tidak valid atau kadaluwarsa 1",
+        message: "Token tidak tidak valid atau kadaluwarsa",
         data: null,
       })
       .end();
@@ -23,7 +23,7 @@ const authMiddleware = (request, response, next) => {
       .status(401)
       .json({
         status: 108,
-        message: "Token tidak tidak valid atau kadaluwarsa 2",
+        message: "Token tidak tidak valid atau kadaluwarsa",
         data: null,
       })
       .end();

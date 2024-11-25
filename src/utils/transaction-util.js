@@ -1,19 +1,18 @@
 import { prismaClient } from "../application/database.js";
 
-// Function to generate invoice number
 const generateInvoiceNumber = async () => {
   const today = new Date();
-  const dateStr = today.toISOString().slice(0, 10).replace(/-/g, ""); // 'YYYY-MM-DD' to 'DDMMYYYY'
+  const dateStr = today.toISOString().slice(0, 10).replace(/-/g, ""); 
 
   // ------- ORM Ver -------
   //   const lastInvoice = await prismaClient.transaction.findFirst({
   //     where: {
   //       invoice_number: {
-  //         startsWith: "INV" + dateStr, // Check if invoice starts with 'INVDDMMYYYY'
+  //         startsWith: "INV" + dateStr, 
   //       },
   //     },
   //     orderBy: {
-  //       invoice_number: "desc", // Sort by descending invoice number
+  //       invoice_number: "desc", 
   //     },
   //   });
 

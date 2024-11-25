@@ -22,7 +22,7 @@ const verifyToken = (token) => {
 };
 
 const getBaseURL = () => {
-  return process.env.BASE_URL || "http://localhost:3002"; // Default to localhost if not set
+  return process.env.BASE_URL || "http://localhost:3002"; 
 };
 
 export {
